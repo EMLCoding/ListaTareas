@@ -11,13 +11,26 @@ export class DeseosService {
 
   constructor() {
     console.log("Servicio inicializado");
-
-    //Las siguientes constantes se van a utilizar para realizar pruebas:
-    const lista1 = new Lista( 'Lista de la compra' );
-    const lista2 = new Lista( 'Cosas que hacer' );
-    //Se añaden las listas al array
-    this.listas.push(lista1, lista2);
-    console.log(this.listas);
+    this.cargarStorage();//Carga los datos cada vez que se abre la app
     
+   }
+
+   crearLista (titulo: string){
+    const nuevaLista = new Lista( titulo );
+    this.listas.push(nuevaLista);
+    this.guardarStorage();//Guarda la informacion en el Local Storage
+   }
+
+   //Cuando se añadan listas se va a guardar en el Local Storage
+   guardarStorage(){
+      localStorage.setItem('datos',JSON.stringify(this.listas));//Convierte la informacion en string porque en localStorage solo se pueden guardar stringss
+   }
+
+   //Este metodo permite cargar
+   cargarStorage(){
+     //Si hay datos guardados entonces cargalos en el array de listas
+     if(localStorage.getItem('datos')){
+      this.listas = JSON.parse(localStorage.getItem('datos'));
+     }
    }
 }

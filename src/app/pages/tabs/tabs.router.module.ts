@@ -14,6 +14,12 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../tab1/tab1.module').then(m => m.Tab1PageModule)
+          },
+          //PARA IR A LA RUTA DE CREAR NUEVA LISTA PRESIONANDO EL BOTON +
+          {
+            path: 'agregar',
+            /* El loadChildren sale de app-routing.module.ts (se añade solo al crear el componente) */
+            loadChildren: '../agregar/agregar.module#AgregarPageModule'
           }
         ]
       },
