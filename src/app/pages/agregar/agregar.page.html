@@ -6,7 +6,7 @@
             Si directamente cargamos la app con este componente entonces hay que forzar la ruta a la que volver -->
             <ion-back-button color="tertiary" defaultHref='/'></ion-back-button>
         </ion-buttons>
-        <ion-title>Agregar Lista</ion-title>
+        <ion-title>{{lista.titulo}}</ion-title>
     </ion-toolbar>
 </ion-header>
 
@@ -15,7 +15,8 @@
     <ion-list color="dark">
         <ion-item color="dark">
             <ion-label position="floating">Nuevo Item</ion-label>
-            <ion-input type="text"></ion-input>
+            <!-- Lo que se escriba en este input se va a guardar en la variable "nombreItem" de agregar.page.ts -->
+            <ion-input type="text" [(ngModel)]="nombreItem" (keyup.enter)="agregarItem()"></ion-input>
         </ion-item>
     </ion-list>
 
@@ -25,9 +26,11 @@
             <ion-label>Tareas por hacer</ion-label>
         </ion-header>
 
-        <ion-item color="dark">
-            <ion-checkbox slot="start" color="tertiary"></ion-checkbox>
-            <ion-label>Prueba</ion-label>
+        <ion-item class="animated fadeInDown" color="dark" *ngFor="let item of lista.items">
+            <!-- Este ngModel comprueba si el item esta completado o no y puede modificar su valor si le damos a la casilla -->
+            <!-- El (ionChange) es un metodo que salta cuando se modifica el ion -->
+            <ion-checkbox slot="start" color="tertiary" [(ngModel)]="item.completado" (ionChange)="cambioCheck(item)"></ion-checkbox>
+            <ion-label>{{item.desc}}</ion-label>
         </ion-item>
     </ion-list>
 

@@ -17,7 +17,7 @@ const routes: Routes = [
           },
           //PARA IR A LA RUTA DE CREAR NUEVA LISTA PRESIONANDO EL BOTON +
           {
-            path: 'agregar',
+            path: 'agregar/:listaId',
             /* El loadChildren sale de app-routing.module.ts (se añade solo al crear el componente) */
             loadChildren: '../agregar/agregar.module#AgregarPageModule'
           }

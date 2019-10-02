@@ -42,7 +42,9 @@ export class Tab1Page {
             //Este "titulo" es el del "name" del input
             if(datos.titulo.length>0){
               console.log(datos);
-              this.deseosService.crearLista(datos.titulo);
+              const listaId = this.deseosService.crearLista(datos.titulo);
+              //Se le indica la ruta, que esta indicada en tabs.router.module.ts, a la que nos redirigira la app al crear una lista
+              this.router.navigateByUrl(`/tabs/tab1/agregar/${ listaId }`);
             }else{
               return;
             }

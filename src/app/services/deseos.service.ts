@@ -19,16 +19,30 @@ export class DeseosService {
     const nuevaLista = new Lista( titulo );
     this.listas.push(nuevaLista);
     this.guardarStorage();//Guarda la informacion en el Local Storage
+    //Este metodo va a devolver un id, para que cuando se cree una lista nueva nos rediriga directamente a la ventana de dicha lista
+    return nuevaLista.id;
+   }
+
+   //Se pasa por parametro un "id" que puede ser un "string" O un "number".
+   //El metodo se va a usar para obtener una lista en funcion de su ID
+   obtenerLista( id: string | number){
+    //Forzamos que el id sea un numero
+    id = Number(id);
+    //Devuelve un booleano
+    return this.listas.find( listaResultado => listaResultado.id === id);
+
    }
 
    //Cuando se añadan listas se va a guardar en el Local Storage
    guardarStorage(){
+     //"localStorage.setItem" es un metodo ya predefinido por Ionic
       localStorage.setItem('datos',JSON.stringify(this.listas));//Convierte la informacion en string porque en localStorage solo se pueden guardar stringss
    }
 
    //Este metodo permite cargar
    cargarStorage(){
      //Si hay datos guardados entonces cargalos en el array de listas
+     //"localStorage.getItem" es un metodo ya predefinido por Ionic
      if(localStorage.getItem('datos')){
       this.listas = JSON.parse(localStorage.getItem('datos'));
      }
