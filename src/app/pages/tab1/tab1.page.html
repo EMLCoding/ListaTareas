@@ -1,0 +1,21 @@
+<!-- el "no-border" quita una raya de sombreado que aparecía debajo del header -->
+<!-- Los colores y estilos estan establecidos en theme/variables.css -->
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Pendientes
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <!-- AQUI VA TODO EL CONTENIDO -->
+
+    <ion-list color="dark">
+        <!-- El "detail" hace que aparezca una flechita a la derecha del titulo de cada una de las listas -->
+        <ion-item *ngFor="let elemento of deseosService.listas" detail color="dark">
+            <ion-label>{{elemento.titulo}}</ion-label>
+        </ion-item>
+    </ion-list>
+
+</ion-content>
