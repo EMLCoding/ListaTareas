@@ -1,0 +1,36 @@
+<!-- ESTE COMPONENTE VA A SER REUTILIZABLE EN TAB1 Y TAB2 -->
+
+<ion-list color="dark">
+
+    <!-- El ion-item-sliding permite dotar al ion-item que haya dentro de una animacion de deslizar -->
+    <!-- Se utiliza un pipe (pipes/filtro-completado) para ver si todas las tareas de la lista estan completadas o no -->
+    <ion-item-sliding *ngFor="let elemento of deseosService.listas | filtroCompletado:terminada; let i = index">
+
+        <!-- El "detail" hace que aparezca una flechita a la derecha del titulo de cada una de las listas -->
+        <ion-item detail color="dark" (click)="listaSeleccionada(elemento)">
+            <ion-label>{{elemento.titulo}}</ion-label>
+            <!-- Se va a añadir un contador de elementos a cada lista -->
+            <ion-note slot="end" color="tertiary">{{ elemento.items.length}} Tareas</ion-note>
+        </ion-item>
+
+        <!-- Este será el boton que aparezca al deslizar. Aparecerá a la derecha (side=end) -->
+        <ion-item-options side="end">
+            <!-- Al hacer click en este objeto llama al metodo "borrar" de agregar.page.ts. Se le pasa por parametro el indice, es decir, el item en concreto en el que estamos dentro del bucle for -->
+            <!-- color="danger" pone el boton en rojo -->
+            <ion-item-option (click)="deseosService.borrarLista(i)" color="danger">
+                <!-- Esto sera el icono que aparezca en el boton -->
+                <ion-icon slot="icon-only" name="close"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+
+        <ion-item-options side="start">
+            <!-- Al hacer click en este objeto llama al metodo "borrar" de agregar.page.ts. Se le pasa por parametro el indice, es decir, el item en concreto en el que estamos dentro del bucle for -->
+            <!-- color="danger" pone el boton en rojo -->
+            <ion-item-option (click)="editarLista(elemento)">
+                <!-- Esto sera el icono que aparezca en el boton -->
+                <ion-icon slot="icon-only" name="create"></ion-icon>
+            </ion-item-option>
+        </ion-item-options>
+    </ion-item-sliding>
+
+</ion-list>

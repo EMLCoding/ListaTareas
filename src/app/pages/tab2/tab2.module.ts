@@ -4,13 +4,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab2Page } from './tab2.page';
+import { ComponentsModule } from '../../components/components.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    RouterModule.forChild([{ path: '', component: Tab2Page }])
+    RouterModule.forChild([{ path: '', component: Tab2Page }]),
+    //SE VA A IMPORTAR EL MODULO COMPONENTS.MODULE.TS PARA PODER UTILIZAR SUS COMPONENTES EN ESTE MODULO Y TODOS SUS COMPONENTES
+    ComponentsModule,
   ],
   declarations: [Tab2Page]
 })

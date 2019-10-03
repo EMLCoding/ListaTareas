@@ -21,7 +21,7 @@
     </ion-list>
 
     <ion-list>
-        <ion-header color="dark">
+        <ion-header color="dark" *ngIf="lista.items.length > 0">
             <!-- Aqui se muestran las tareas que se han ido añadiendo a la nueva lista -->
             <ion-label>Tareas por hacer</ion-label>
         </ion-header>

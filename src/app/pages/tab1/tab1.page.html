@@ -11,14 +11,11 @@
 <ion-content color="dark">
     <!-- AQUI VA TODO EL CONTENIDO -->
 
-    <ion-list color="dark">
-        <!-- El "detail" hace que aparezca una flechita a la derecha del titulo de cada una de las listas -->
-        <ion-item *ngFor="let elemento of deseosService.listas" detail color="dark">
-            <ion-label>{{elemento.titulo}}</ion-label>
-        </ion-item>
-    </ion-list>
+    <!-- Se IMPORTA el html del componente listas.component del modulo components.module.ts. De esta forma se puede usar en varios componentes sin duplicar codigo-->
+    <!-- Este terminada es el que esta en listas.component.ts -->
+    <app-listas [terminada]="false"></app-listas>
 
-    <!-- fab placed to the top end -->
+    <!-- Este es el boton con el + para agregar nuevas listas -->
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="tertiary" (click)="agregarLista()">
             <ion-icon name="add"></ion-icon>

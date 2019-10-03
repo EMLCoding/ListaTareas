@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab Two
-    </ion-title>
-  </ion-toolbar>
+<ion-header no-border>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Finalizadas
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content color="dark">
+
+    <!-- AQUI VA TODO EL CONTENIDO -->
+
+    <!-- Se IMPORTA el html del componente listas.component del modulo components.module.ts. De esta forma se puede usar en varios componentes sin duplicar codigo-->
+    <!-- Este terminada es el que esta en listas.component.ts -->
+    <app-listas [terminada]="true"></app-listas>
+
+</ion-content>

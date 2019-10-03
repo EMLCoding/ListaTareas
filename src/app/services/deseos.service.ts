@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Lista } from '../models/lista';
 
+//Esto hace que este Servicio pueda ser utilizado en TODOS los componentes de TODOS LOS MODULOS con solo declararlo en el "constructor" del componente deseado
 @Injectable({
   providedIn: 'root'
 })
@@ -47,4 +48,10 @@ export class DeseosService {
       this.listas = JSON.parse(localStorage.getItem('datos'));
      }
    }
+
+   borrarLista(indice:number){
+    //El metodo "splice" borrar la cantidad de listas que queramos (el 1) desde la posicion indicada (indice).
+    this.listas.splice(indice, 1);
+    this.guardarStorage();
+  }
 }
