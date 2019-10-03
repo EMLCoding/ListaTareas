@@ -56,5 +56,12 @@ export class AgregarPage{
       this.deseosService.guardarStorage();
    }
 
+   //Metodo para borrar un item de la lista en la que estamos
+   borrar(indice:number){
+     //El metodo "splice" borra, de la lista, la cantidad de items que queramos (el 1) desde la posicion indicada (indice).
+      this.lista.items.splice(indice, 1);
+      this.deseosService.guardarStorage();
+   }
+
 
 }

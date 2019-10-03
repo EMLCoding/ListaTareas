@@ -14,9 +14,6 @@ export class Tab1Page {
 
   //El async hace que la funcion se convierta en una "promesa"
   async agregarLista(){
-    //Se le indica la ruta que esta en tabs.router.module.ts
-    //this.router.navigateByUrl('/tabs/tab1/agregar');
-
     const alert = await this.alertController.create({
       header: 'Nueva Lista',
       inputs:[
@@ -48,7 +45,6 @@ export class Tab1Page {
             }else{
               return;
             }
-            
           }
         }
       ]

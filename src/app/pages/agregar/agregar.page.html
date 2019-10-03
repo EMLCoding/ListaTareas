@@ -26,12 +26,26 @@
             <ion-label>Tareas por hacer</ion-label>
         </ion-header>
 
-        <ion-item class="animated fadeInDown" color="dark" *ngFor="let item of lista.items">
-            <!-- Este ngModel comprueba si el item esta completado o no y puede modificar su valor si le damos a la casilla -->
-            <!-- El (ionChange) es un metodo que salta cuando se modifica el ion -->
-            <ion-checkbox slot="start" color="tertiary" [(ngModel)]="item.completado" (ionChange)="cambioCheck(item)"></ion-checkbox>
-            <ion-label>{{item.desc}}</ion-label>
-        </ion-item>
+        <!-- El ion-item-sliding permite dotar al ion-item que haya dentro de una animacion de deslizar -->
+        <ion-item-sliding class="animated fadeInDown" *ngFor="let item of lista.items; let i = index">
+            <ion-item color="dark">
+                <!-- Este ngModel comprueba si el item esta completado o no y puede modificar su valor si le damos a la casilla -->
+                <!-- El (ionChange) es un metodo que salta cuando se modifica el ion -->
+                <ion-checkbox slot="start" color="tertiary" [(ngModel)]="item.completado" (ionChange)="cambioCheck(item)"></ion-checkbox>
+                <ion-label>{{item.desc}}</ion-label>
+            </ion-item>
+            <!-- Este será el boton que aparezca al deslizar. Aparecerá a la derecha (side=end) -->
+            <ion-item-options side="end">
+                <!-- Al hacer click en este objeto llama al metodo "borrar" de agregar.page.ts. Se le pasa por parametro el indice, es decir, el item en concreto en el que estamos dentro del bucle for -->
+                <!-- color="danger" pone el boton en rojo -->
+                <ion-item-option (click)="borrar(i)" color="danger">
+                    <!-- Esto sera el icono que aparezca en el boton -->
+                    <ion-icon slot="icon-only" name="close"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+        </ion-item-sliding>
+
+
     </ion-list>
 
 </ion-content>
